@@ -93,6 +93,6 @@ def top(user):
         first_name = Users.get_data(list(users_exp.keys())[exp_id], 'first_name')
         last_name = Users.get_data(list(users_exp.keys())[exp_id], 'last_name')
         username = Users.get_data(list(users_exp.keys())[exp_id], 'username')
-    text += f"{exp_id + 1}. {first_name} {last_name + ' ' if not last_name is None else ''}{'(@' + username + ')' if username is not None else ''} - {list(users_exp.values())[exp_id]}\n"
+        text += f"{exp_id + 1}. {first_name} {last_name + ' ' if not last_name is None else ''}{'(@' + username + ')' if username is not None else ''} - {list(users_exp.values())[exp_id]}\n"
 
     return text
