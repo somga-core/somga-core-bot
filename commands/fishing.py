@@ -90,9 +90,9 @@ def top(user):
     text = "Топ участников по количеству фантиков:\n"
 
     for exp_id in range(len(users_exp)):
-        first_name = Users.get_data(list(users_exp.keys())[exp_id], 'first_name', 'Нет юзернейма')
+        first_name = Users.get_data(list(users_exp.keys())[exp_id], 'first_name')
         last_name = Users.get_data(list(users_exp.keys())[exp_id], 'last_name')
-        username = Users.get_data(list(users_exp.keys())[exp_id], 'username')
+        username = Users.get_data(list(users_exp.keys())[exp_id], 'username', 'Нет юзернейма')
         text += f"{exp_id + 1}. {first_name} {last_name + ' ' if not last_name is None else ''}({username}) - {list(users_exp.values())[exp_id]}\n"
 
     return text
