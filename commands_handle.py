@@ -42,10 +42,10 @@ class CommandsHandle:
         chat_id = message.chat.id
 
         names = [bot.get_chat(user).username, bot.get_chat(user).first_name, bot.get_chat(user).last_name]
-        Users.send_data(user, {"username": names[0]}) if not names[0] is None else print()
-        Users.send_data(user, {"first_name": names[1]}) if not names[1] is None else print()
-        Users.send_data(user, {"last_name": names[2]}) if not names[2] is None else print()
-        
+        Users.send_data(user, {"username": names[0]})
+        Users.send_data(user, {"first_name": names[1]})
+        Users.send_data(user, {"last_name": names[2]})
+
         sended_message = function(user)
         command = [i for i in CommandsHandle.commands_list if CommandsHandle.commands_list[i] == function][0]
 

@@ -16,7 +16,7 @@ class Users:
         with open(join(USERS_FOLDER, f"{user}{USER_FILE_TYPE}")) as f:
             data = json.loads(f.read())
 
-        if not variable in data:
+        if not variable in data or data[variable] is None:
             return empty_variable
 
         return data[variable]
@@ -44,7 +44,7 @@ class Users:
         for user in users:
             with open(join(USERS_FOLDER, f"{user}{USER_FILE_TYPE}")) as f:
                 current_data = json.loads(f.read())
-            if not variable in current_data:
+            if not variable in current_data or current_data[variable] is None:
                 data[user] = empty_variable
             else:
                 data[user] = current_data[variable]
