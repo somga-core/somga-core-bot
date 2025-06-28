@@ -43,7 +43,11 @@ class CommandsHandle:
         sended_message = function(user)
         command = [i for i in CommandsHandle.commands_list if CommandsHandle.commands_list[i] == function][0]
 
-        Users.send_data(user, {"username": bot.get_chat(user).username})
+        names = [bot.get_chat(user).username, bot.get_chat(user).first_name, bot.get_chat(user).last_name]
+
+        Users.send_data(user, {"username": names[0]}) if not names[0] is None else print()
+        Users.send_data(user, {"first_name": names[1]}) if not names[1] is None else print()
+        Users.send_data(user, {"last_name": names[2]}) if not names[2] is None else print()
 
         # markup = telebot.types.ReplyKeyboardRemove(selective=False)
         markup = telebot.types.InlineKeyboardMarkup(row_width=2)
@@ -73,7 +77,7 @@ class CommandsHandle:
                 reply_markup=markup
             )
 
-        print(f"[c] {bot.get_chat(user).username} used {command}")
+        print(f"[c] {names[1]} {names[2]} (@{names[0]}) used {command}")
 
     @staticmethod
     def template_inline_callback(call, bot):
