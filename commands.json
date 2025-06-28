@@ -1,0 +1,39 @@
+{
+    "fishing": {
+        "/fish": {
+            "function": "fish",
+            "buttons": {
+                "Рыбачить ещё!": "/fish",
+                "Статистика": "/stats"
+            }
+        },
+        "/stats": {
+            "function": "stats",
+            "buttons": {
+                "Рыбачить дальше!": "/fish",
+                "Улучшить удочку": "/upgrade",
+                "Посмотреть топ": "/top"
+            }
+        },
+        "/top": {
+            "function": "top",
+            "buttons": {
+                "Продолжить рыбалку!": "/fish"
+            }
+        },
+        "/upgrade": {
+            "function": "upgrade",
+            "buttons": {
+                "Вернуться к рыбалке": "/fish"
+            }
+        }
+    },
+    "basic": {
+        "/start": {
+            "function": "start",
+            "buttons": {
+                "Рыбачить!": "/fish"
+            }
+        }
+    }
+}
