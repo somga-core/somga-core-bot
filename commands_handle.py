@@ -40,14 +40,14 @@ class CommandsHandle:
     @staticmethod
     def template_command(user, function, message, bot):
         chat_id = message.chat.id
-        sended_message = function(user)
-        command = [i for i in CommandsHandle.commands_list if CommandsHandle.commands_list[i] == function][0]
 
         names = [bot.get_chat(user).username, bot.get_chat(user).first_name, bot.get_chat(user).last_name]
-
         Users.send_data(user, {"username": names[0]}) if not names[0] is None else print()
         Users.send_data(user, {"first_name": names[1]}) if not names[1] is None else print()
         Users.send_data(user, {"last_name": names[2]}) if not names[2] is None else print()
+        
+        sended_message = function(user)
+        command = [i for i in CommandsHandle.commands_list if CommandsHandle.commands_list[i] == function][0]
 
         # markup = telebot.types.ReplyKeyboardRemove(selective=False)
         markup = telebot.types.InlineKeyboardMarkup(row_width=2)
