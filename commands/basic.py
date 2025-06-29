@@ -15,3 +15,6 @@ def start(user):
         "entities": [],
         "image": "somga_core.png"
     }
+
+def debug(user):
+    return "Эта команда доступна только админам!!!!!!! Если ты это читаешь, то ты - админ!!!!"
