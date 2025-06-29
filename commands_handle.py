@@ -8,6 +8,7 @@ from datetime import datetime
 class CommandsHandle:
     commands_list = {}
     buttons_list = {}
+    admin_functions_list = []
 
     with open(COMMANDS_FILE) as f:
         raw_data = json.loads(f.read())
@@ -16,6 +17,8 @@ class CommandsHandle:
         exec(f"import {COMMANDS_FOLDER.strip('/.')}.{pack}")
         for command in raw_data[pack]:
             commands_list[command] = eval(f"{COMMANDS_FOLDER.strip('/.')}.{pack}.{raw_data[pack][command]['function']}")
+            if raw_data[pack][command]["admin"]:
+                admin_functions_list.append(commands_list[command])
             
     for pack in raw_data:
         for command in raw_data[pack]:
@@ -40,6 +43,9 @@ class CommandsHandle:
 
     @staticmethod
     def template_command(user, function, message, bot):
+        if function in CommandsHandle.admin_functions_list and not user in ADMIN_USERS:
+            return 0
+
         chat_id = message.chat.id
 
         names = [bot.get_chat(user).username, bot.get_chat(user).first_name, bot.get_chat(user).last_name]

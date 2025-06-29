@@ -2,6 +2,7 @@
     "fishing": {
         "/fish": {
             "function": "fish",
+            "admin": false,
             "buttons": {
                 "Рыбачить ещё!": "/fish",
                 "Статистика": "/stats"
@@ -9,6 +10,7 @@
         },
         "/stats": {
             "function": "stats",
+            "admin": false,
             "buttons": {
                 "Рыбачить дальше!": "/fish",
                 "Улучшить удочку": "/upgrade",
@@ -17,12 +19,14 @@
         },
         "/top": {
             "function": "top",
+            "admin": false,
             "buttons": {
                 "Продолжить рыбалку!": "/fish"
             }
         },
         "/upgrade": {
             "function": "upgrade",
+            "admin": false,
             "buttons": {
                 "Вернуться к рыбалке": "/fish"
             }
@@ -31,9 +35,15 @@
     "basic": {
         "/start": {
             "function": "start",
+            "admin": false,
             "buttons": {
                 "Рыбачить!": "/fish"
             }
+        },
+        "/debug": {
+            "function": "debug",
+            "admin": true,
+            "buttons": {}
         }
     }
 }
