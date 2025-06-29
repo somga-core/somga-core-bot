@@ -78,7 +78,7 @@ class CommandsHandle:
                 reply_markup=markup
             )
 
-        print(f"[c] {names[1]} {names[2]} (@{names[0]}) used {command}")
+        print(f"[c] ({datetime.now().strftime(TIME_FORMAT)}) {names[1]} {names[2]} (@{names[0]}) used {command}")
 
     @staticmethod
     def template_inline_callback(call, bot):
