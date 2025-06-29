@@ -3,6 +3,7 @@ import json
 from os.path import join
 from settings import *
 from users import *
+from datetime import datetime
 
 class CommandsHandle:
     commands_list = {}
@@ -21,7 +22,7 @@ class CommandsHandle:
             for button in raw_data[pack][command]["buttons"]:
                 buttons_list[button] = [commands_list[command], commands_list[raw_data[pack][command]["buttons"][button]]]
 
-    print("[i] Commands handle init complete")
+    print(f"[i] ({datetime.now().strftime(TIME_FORMAT)}) Commands handle init complete")
 
     @staticmethod
     def create_command_handler(command, bot):
@@ -88,4 +89,4 @@ class CommandsHandle:
                     CommandsHandle.template_command(str(call.from_user.id), function, call.message, bot)
 
         except Exception as error:
-            print("[e] Inline callback error occured: " + str(error))
+            print(f"[e] ({datetime.now().strftime(TIME_FORMAT)}) Inline callback error occured: " + str(error))
