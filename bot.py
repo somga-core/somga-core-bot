@@ -14,7 +14,15 @@ class Bot(telebot.TeleBot):
         for command in CommandsHandle.commands_list:
             CommandsHandle.create_command_handler(command, self)
         CommandsHandle.create_inline_callback_handler(self)
+
+        self.message_handler(commands=["/restart"])(self.restart)
+
         print(f"[i] ({datetime.now().strftime(TIME_FORMAT)}) Commands loaded")
+
+    def restart(self, message):
+        if not message.from_user.id in ADMIN_USERS:
+            return 0
+        self.stop_bot()
 
 def start(TOKEN):
     bot_object = Bot(TOKEN)
@@ -22,6 +30,7 @@ def start(TOKEN):
     while True:
         try:
             bot_object.polling(none_stop=True)
+            break
         except Exception as e:
             print(f"[e] ({datetime.now().strftime(TIME_FORMAT)}) Bot run error occured:", e)
             time.sleep(5)
