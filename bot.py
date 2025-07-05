@@ -15,7 +15,7 @@ class Bot(telebot.TeleBot):
             CommandsHandle.create_command_handler(command, self)
         CommandsHandle.create_inline_callback_handler(self)
 
-        self.message_handler(commands=["/restart"])(self.restart)
+        self.message_handler(commands=["restart"])(self.restart)
 
         print(f"[i] ({datetime.now().strftime(TIME_FORMAT)}) Commands loaded")
 
