@@ -21,7 +21,9 @@ class Bot(telebot.TeleBot):
 
     def restart(self, message):
         if not message.from_user.id in ADMIN_USERS:
+            print(f"[c] ({datetime.now().strftime(TIME_FORMAT)}) {message.from_user.first_name} {message.from_user.last_name} (@{message.from_user.username}) tried to restart bot, but did not have permission")
             return 0
+        print(f"[c] ({datetime.now().strftime(TIME_FORMAT)}) {message.from_user.first_name} {message.from_user.last_name} (@{message.from_user.username}) restarted bot")
         self.stop_bot()
 
 def start(TOKEN):
