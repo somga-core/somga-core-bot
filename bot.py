@@ -25,7 +25,7 @@ class Bot(telebot.TeleBot):
             return 0
         print(f"[c] ({datetime.now().strftime(TIME_FORMAT)}) {message.from_user.first_name} {message.from_user.last_name} (@{message.from_user.username}) restarted bot")
         self.stop_polling()
-        self.stop_polling()
+        self.stop_bot()
         print("stoped_piolling")
 
 def start(TOKEN):
