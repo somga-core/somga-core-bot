@@ -26,7 +26,7 @@ class Bot(telebot.TeleBot):
         print(f"[c] ({datetime.now().strftime(TIME_FORMAT)}) {message.from_user.first_name} {message.from_user.last_name} (@{message.from_user.username}) restarted bot")
         self.stop_polling()
         self.send_message(
-            chat_id=message.chat_id,
+            chat_id=message.chat.id,
             text="Рестартинг..."
         )
         print("stoped_piolling")
