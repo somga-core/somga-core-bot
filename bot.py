@@ -2,20 +2,20 @@ import telebot
 from settings import *
 from commands_handle import *
 import time
-from datetime import datetime
+from logs import *
 
 class Bot(telebot.TeleBot):
     def __init__(self, token):
         super().__init__(token)
         self.command_handler()
-        print(f"[i] ({datetime.now().strftime(TIME_FORMAT)}) Bot init complete")
+        Logs.print_log("i", "Bot init complete")
 
     def command_handler(self):
         for command in CommandsHandle.commands_list:
             CommandsHandle.create_command_handler(command, self)
         CommandsHandle.create_inline_callback_handler(self)
-        
-        print(f"[i] ({datetime.now().strftime(TIME_FORMAT)}) Commands loaded")
+
+        Logs.print_log("i", "Commands loaded")
 
 def start(TOKEN):
     bot_object = Bot(TOKEN)
@@ -23,7 +23,7 @@ def start(TOKEN):
     while True:
         try:
             bot_object.polling(none_stop=True)
-        except Exception as e:
-            print(f"[e] ({datetime.now().strftime(TIME_FORMAT)}) Bot run error occured:", e)
+        except Exception as error:
+            Logs.print_log("i", f"Waiting 5 seconds and restarting")
             time.sleep(5)
             break

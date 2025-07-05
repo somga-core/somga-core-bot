@@ -1,12 +1,11 @@
 from os import listdir
 from os.path import isfile, join
 import json
-from datetime import datetime
-
+from logs import *
 from settings import *
 
 class Users:
-    print(f"[i] ({datetime.now().strftime(TIME_FORMAT)}) Users init complete")
+    Logs.print_log("i", "Users init complete")
 
     @staticmethod
     def get_data(user, variable, empty_variable=None):
