@@ -14,17 +14,8 @@ class Bot(telebot.TeleBot):
         for command in CommandsHandle.commands_list:
             CommandsHandle.create_command_handler(command, self)
         CommandsHandle.create_inline_callback_handler(self)
-
-        self.message_handler(commands=["restart"])(self.restart)
-
+        
         print(f"[i] ({datetime.now().strftime(TIME_FORMAT)}) Commands loaded")
-
-    def restart(self, message):
-        if not str(message.from_user.id) in ADMIN_USERS:
-            print(f"[c] ({datetime.now().strftime(TIME_FORMAT)}) {message.from_user.first_name} {message.from_user.last_name} (@{message.from_user.username}) tried to restart bot, but did not have permission")
-            return 0
-        print(f"[c] ({datetime.now().strftime(TIME_FORMAT)}) {message.from_user.first_name} {message.from_user.last_name} (@{message.from_user.username}) restarted bot")
-        raise Exception("stopped polling")
 
 def start(TOKEN):
     bot_object = Bot(TOKEN)

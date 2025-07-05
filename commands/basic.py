@@ -17,5 +17,7 @@ def start(user):
     }
 
 def debug(user):
-    raise Exception("debug")
     return "Эта команда доступна только админам!!!!!!! Если ты это читаешь, то ты - админ!!!!"
+
+def restart(user):
+    raise Exception("restarting")
