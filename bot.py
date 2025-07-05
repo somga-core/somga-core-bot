@@ -31,9 +31,13 @@ def start(TOKEN):
 
     while True:
         try:
+            print("start_polling")
             bot_object.polling(none_stop=True)
+            print("breaking")
             break
         except Exception as e:
             print(f"[e] ({datetime.now().strftime(TIME_FORMAT)}) Bot run error occured:", e)
             time.sleep(5)
             continue
+        
+    print("out of loop")
