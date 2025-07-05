@@ -24,11 +24,7 @@ class Bot(telebot.TeleBot):
             print(f"[c] ({datetime.now().strftime(TIME_FORMAT)}) {message.from_user.first_name} {message.from_user.last_name} (@{message.from_user.username}) tried to restart bot, but did not have permission")
             return 0
         print(f"[c] ({datetime.now().strftime(TIME_FORMAT)}) {message.from_user.first_name} {message.from_user.last_name} (@{message.from_user.username}) restarted bot")
-        self.stop_polling()
-        self.send_message(
-            chat_id=message.chat.id,
-            text="Рестартинг..."
-        )
+        raise Exception("Stopped polling")
         print("stoped_piolling")
 
 def start(TOKEN):
@@ -38,11 +34,9 @@ def start(TOKEN):
         try:
             print("start_polling")
             bot_object.polling(none_stop=True)
-            print("breaking")
-            break
         except Exception as e:
             print(f"[e] ({datetime.now().strftime(TIME_FORMAT)}) Bot run error occured:", e)
             time.sleep(5)
-            continue
+            break
 
     print("out of loop")
