@@ -16,7 +16,7 @@ class CommandsHandle:
         exec(f"import {COMMANDS_FOLDER.strip('/.')}.{pack}")
         for command in raw_data[pack]:
             commands_list[command] = eval(f"{COMMANDS_FOLDER.strip('/.')}.{pack}.{raw_data[pack][command]['function']}")
-            if raw_data[pack][command]["admin"]:
+            if "admin" in raw_data[pack][command] and raw_data[pack][command]["admin"]:
                 admin_functions_list.append(commands_list[command])
 
     Logs.print_log("i", "Commands handle init complete")

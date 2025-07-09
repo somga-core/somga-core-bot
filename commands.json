@@ -1,26 +1,21 @@
 {
     "fishing": {
         "/fish": {
-            "function": "fish",
-            "admin": false
+            "function": "fish"
         },
         "/stats": {
-            "function": "stats",
-            "admin": false
+            "function": "stats"
         },
         "/top": {
-            "function": "top",
-            "admin": false
+            "function": "top"
         },
         "/upgrade": {
-            "function": "upgrade",
-            "admin": false
+            "function": "upgrade"
         }
     },
     "basic": {
         "/start": {
-            "function": "start",
-            "admin": false
+            "function": "start"
         },
         "/debug": {
             "function": "debug",
