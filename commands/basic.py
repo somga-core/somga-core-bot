@@ -15,7 +15,7 @@ def start(user):
         "entities": [],
         "image": "somga_core.png",
         "buttons": {
-            "Рыбачить!": "/fish"
+            "Закинуть удочку": "/fish"
         }
     }
 

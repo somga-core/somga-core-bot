@@ -56,7 +56,7 @@ def fish(user):
         "text": text,
         "entities": [],
         "buttons": {
-            "Рыбачить ещё!": "/fish",
+            "Закинуть удочку": "/fish",
             "Статистика": "/stats"
         }
     }   
@@ -66,7 +66,7 @@ def stats(user):
     rod = Users.get_data(user, "rod", 0)
     fish_count = Users.get_data(user, "fish_count", 0)
     buttons = {
-        "Рыбачить дальше!": "/fish",
+        "Закинуть удочку": "/fish",
         "Посмотреть топ": "/top"
     }
 
@@ -101,7 +101,7 @@ def upgrade(user):
         "text": text,
         "entities": [],
         "buttons": {
-            "Вернуться к рыбалке": "/fish"
+            "Закинуть удочку": "/fish"
         }
     }
 
@@ -121,6 +121,6 @@ def top(user):
         "text": text,
         "entities": [],
         "buttons": {
-            "Продолжить рыбалку!": "/fish"
+            "Закинуть удочку": "/fish"
         }
     }
