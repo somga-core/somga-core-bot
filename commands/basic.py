@@ -13,7 +13,10 @@ def start(user):
     return {
         "text": text,
         "entities": [],
-        "image": "somga_core.png"
+        "image": "somga_core.png",
+        "buttons": {
+            "Рыбачить!": "/fish"
+        }
     }
 
 def debug(user):

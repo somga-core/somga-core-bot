@@ -51,21 +51,37 @@ def fish(user):
     Users.send_data(user, {"fish_count": fish_count + 1})
     
     text = f"Вы поймали такую рыбу:\n\n" + "\n".join([f"{fish_part_choice[fish_part_index]} - {exp_choice[fish_part_index]} фантиков" for fish_part_index in range(len(fish_parts))]) + f"\n\nЗа которую в сумме заработали {exp_sum} фантиков\nТеперь у вас {exp + exp_sum} фантиков"
-
-    return text
+    
+    return {
+        "text": text,
+        "entities": [],
+        "buttons": {
+            "Рыбачить ещё!": "/fish",
+            "Статистика": "/stats"
+        }
+    }   
 
 def stats(user):
     exp = Users.get_data(user, "exp", 0)
     rod = Users.get_data(user, "rod", 0)
     fish_count = Users.get_data(user, "fish_count", 0)
+    buttons = {
+        "Рыбачить дальше!": "/fish",
+        "Посмотреть топ": "/top"
+    }
 
     text = f"Вы поймали {fish_count} рыбов на {exp} фантиков\nВаша удочка сейчас на {rod+1} уровне\n\n"
     if rod >= len(rods) - 1:
         update_text = "Ваша удочка максимального уровня"
     else:
         update_text = f"Чтобы улучшить удочку, вам нужно {rods[rod]} фантиков"
+        buttons["Улучшить удочку"] = "/upgrade"
     
-    return text + update_text
+    return {
+        "text": text + update_text,
+        "entities": [],
+        "buttons": buttons
+    }
 
 def upgrade(user):
     exp = Users.get_data(user, "exp", 0)
@@ -81,7 +97,13 @@ def upgrade(user):
     else:
         text = "Ваша удочка уже улучшена до максимального уровня"
     
-    return text
+    return {
+        "text": text,
+        "entities": [],
+        "buttons": {
+            "Вернуться к рыбалке": "/fish"
+        }
+    }
 
 def top(user):
     users_exp = Users.get_data_from_all_users("exp", 0)
@@ -95,4 +117,10 @@ def top(user):
         username = Users.get_data(list(users_exp.keys())[exp_id], 'username')
         text += f"{exp_id + 1}. {first_name} {last_name + ' ' if not last_name is None else ''}{'(@' + username + ')' if username is not None else ''} - {list(users_exp.values())[exp_id]}\n"
 
-    return text
+    return {
+        "text": text,
+        "entities": [],
+        "buttons": {
+            "Продолжить рыбалку!": "/fish"
+        }
+    }

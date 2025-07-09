@@ -2,53 +2,33 @@
     "fishing": {
         "/fish": {
             "function": "fish",
-            "admin": false,
-            "buttons": {
-                "Рыбачить ещё!": "/fish",
-                "Статистика": "/stats"
-            }
+            "admin": false
         },
         "/stats": {
             "function": "stats",
-            "admin": false,
-            "buttons": {
-                "Рыбачить дальше!": "/fish",
-                "Улучшить удочку": "/upgrade",
-                "Посмотреть топ": "/top"
-            }
+            "admin": false
         },
         "/top": {
             "function": "top",
-            "admin": false,
-            "buttons": {
-                "Продолжить рыбалку!": "/fish"
-            }
+            "admin": false
         },
         "/upgrade": {
             "function": "upgrade",
-            "admin": false,
-            "buttons": {
-                "Вернуться к рыбалке": "/fish"
-            }
+            "admin": false
         }
     },
     "basic": {
         "/start": {
             "function": "start",
-            "admin": false,
-            "buttons": {
-                "Рыбачить!": "/fish"
-            }
+            "admin": false
         },
         "/debug": {
             "function": "debug",
-            "admin": true,
-            "buttons": {}
+            "admin": true
         },
         "/restart": {
             "function": "restart",
-            "admin": true,
-            "buttons": {}
+            "admin": true
         }
     }
 }

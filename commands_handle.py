@@ -7,7 +7,6 @@ from logs import *
 
 class CommandsHandle:
     commands_list = {}
-    buttons_list = {}
     admin_functions_list = []
 
     with open(COMMANDS_FILE) as f:
@@ -19,11 +18,6 @@ class CommandsHandle:
             commands_list[command] = eval(f"{COMMANDS_FOLDER.strip('/.')}.{pack}.{raw_data[pack][command]['function']}")
             if raw_data[pack][command]["admin"]:
                 admin_functions_list.append(commands_list[command])
-            
-    for pack in raw_data:
-        for command in raw_data[pack]:
-            for button in raw_data[pack][command]["buttons"]:
-                buttons_list[button] = [commands_list[command], commands_list[raw_data[pack][command]["buttons"][button]]]
 
     Logs.print_log("i", "Commands handle init complete")
 
@@ -56,33 +50,39 @@ class CommandsHandle:
         sended_message = function(user)
         command = [i for i in CommandsHandle.commands_list if CommandsHandle.commands_list[i] == function][0]
 
-        # markup = telebot.types.ReplyKeyboardRemove(selective=False)
-        markup = telebot.types.InlineKeyboardMarkup(row_width=2)
-        buttons = CommandsHandle.buttons_list
-        buttons = [telebot.types.InlineKeyboardButton(i, callback_data=i) for i in buttons if buttons[i][0] == function]
-        markup.add(*buttons)
-
         if type(sended_message) == type(""):
             bot.send_message(
                 chat_id=chat_id,
-                text=sended_message,
-                reply_markup=markup
-            )
-        elif "image" in sended_message:
-            bot.send_photo(
-                chat_id=chat_id,
-                caption=sended_message["text"],
-                caption_entities=sended_message["entities"],
-                photo=open(join(IMAGES_FOLDER, sended_message['image']), "rb"),
-                reply_markup=markup
+                text=sended_message
             )
         else:
-            bot.send_message(
-                chat_id=chat_id,
-                text=sended_message["text"],
-                entities=sended_message["entities"],
-                reply_markup=markup
-            )
+            if "buttons" in sended_message:
+                if "button_columns" in sended_message:
+                    button_columns = sended_message["button_columns"]
+                else:
+                    button_columns = BUTTON_COLUMNS
+                
+                markup = telebot.types.InlineKeyboardMarkup(row_width=button_columns)
+
+                buttons = sended_message["buttons"]
+                buttons = [telebot.types.InlineKeyboardButton(i, callback_data=buttons[i]) for i in buttons]
+                markup.add(*buttons)
+
+            if "image" in sended_message:
+                bot.send_photo(
+                    chat_id=chat_id,
+                    caption=sended_message["text"],
+                    caption_entities=sended_message["entities"],
+                    photo=open(join(IMAGES_FOLDER, sended_message['image']), "rb"),
+                    reply_markup=markup
+                )
+            else:
+                bot.send_message(
+                    chat_id=chat_id,
+                    text=sended_message["text"],
+                    entities=sended_message["entities"],
+                    reply_markup=markup
+                )
 
         Logs.print_log("c", f"{names[1]} {names[2]} (@{names[0]}) used {command}")
 
@@ -90,8 +90,8 @@ class CommandsHandle:
     def template_inline_callback(call, bot):
         try:
             if call.message:
-                if call.data in CommandsHandle.buttons_list:
-                    function = CommandsHandle.buttons_list[call.data][1]
+                if call.data in CommandsHandle.commands_list:
+                    function = CommandsHandle.commands_list[call.data]
                     CommandsHandle.template_command(str(call.from_user.id), function, call.message, bot)
 
         except Exception as error:
