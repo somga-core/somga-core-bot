@@ -20,7 +20,7 @@ def start(user, args):
     }
 
 def debug(user, args):
-    return "Эта команда доступна только админам!!!!!!! Если ты это читаешь, то ты - админ!!!!"
+    return "Нет пути, ты задал вот такие аргументы: " + str(args)
 
 def restart(user, args):
     raise Exception("restarting")
