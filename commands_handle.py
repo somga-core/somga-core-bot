@@ -27,7 +27,7 @@ class CommandsHandle:
             commands=[command.strip("/")]
         )(
             lambda message: CommandsHandle.template_command(
-                str(message.from_user.id), CommandsHandle.commands_list[command], message.chat.id, bot
+                str(message.from_user.id), CommandsHandle.commands_list[command], message.chat.id, message.text, bot
             )
         )
 
