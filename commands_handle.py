@@ -27,7 +27,7 @@ class CommandsHandle:
             commands=[command.strip("/")]
         )(
             lambda message: CommandsHandle.template_command(
-                str(message.from_user.id), CommandsHandle.commands_list[command], message, bot
+                str(message.from_user.id), CommandsHandle.commands_list[command], message.chat.id, bot
             )
         )
 
@@ -36,20 +36,19 @@ class CommandsHandle:
         bot.callback_query_handler(func=lambda call: True)(lambda call: CommandsHandle.template_inline_callback(call, bot))
 
     @staticmethod
-    def template_command(user, function, message, bot):
+    def template_command(user, function, chat_id, message_text, bot):
         if function in CommandsHandle.admin_functions_list and not user in ADMIN_USERS:
             return 0
-
-        chat_id = message.chat.id
 
         names = [bot.get_chat(user).username, bot.get_chat(user).first_name, bot.get_chat(user).last_name]
         Users.send_data(user, {"username": names[0]})
         Users.send_data(user, {"first_name": names[1]})
         Users.send_data(user, {"last_name": names[2]})
 
+        args = message_text.split(' ')[1:] 
         Logs.print_log("d", "Test1")
-        Logs.print_log("d", message.text)
-        args = message.text.split(' ')[1:] 
+        Logs.print_log("d", message_text)
+        Logs.print_log("d", args)
 
         sended_message = function(user, args)
         command = [i for i in CommandsHandle.commands_list if CommandsHandle.commands_list[i] == function][0]
@@ -96,7 +95,7 @@ class CommandsHandle:
             if call.message:
                 if call.data in CommandsHandle.commands_list:
                     function = CommandsHandle.commands_list[call.data]
-                    CommandsHandle.template_command(str(call.from_user.id), function, call.message, bot)
+                    CommandsHandle.template_command(str(call.from_user.id), function, call.message.chat.id, call.data, bot)
 
         except Exception as error:
             Logs.print_log("e", f"Inline callback error occured:  {error}")
