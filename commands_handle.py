@@ -45,10 +45,7 @@ class CommandsHandle:
         Users.send_data(user, {"first_name": names[1]})
         Users.send_data(user, {"last_name": names[2]})
 
-        args = message_text.split(' ')[1:] 
-        Logs.print_log("d", "Test1")
-        Logs.print_log("d", message_text)
-        Logs.print_log("d", args)
+        args = message_text.split(' ')[1:]
 
         sended_message = function(user, args)
         command = [i for i in CommandsHandle.commands_list if CommandsHandle.commands_list[i] == function][0]
