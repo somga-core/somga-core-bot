@@ -1,7 +1,7 @@
 from settings import ADMIN_USERS
 from users import *
 
-def start(user):
+def start(user, args):
     start_count = Users.get_data(user, "start_count")
     if start_count is None:
         start_count = 0
@@ -19,8 +19,8 @@ def start(user):
         }
     }
 
-def debug(user):
+def debug(user, args):
     return "Эта команда доступна только админам!!!!!!! Если ты это читаешь, то ты - админ!!!!"
 
-def restart(user):
+def restart(user, args):
     raise Exception("restarting")

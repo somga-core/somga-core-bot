@@ -32,7 +32,7 @@ fish_parts = (
     )
 )
 
-def fish(user):
+def fish(user, args):
     exp = Users.get_data(user, "exp", 0)
     rod = Users.get_data(user, "rod", 0)
     fish_count = Users.get_data(user, "fish_count", 0)
@@ -61,7 +61,7 @@ def fish(user):
         }
     }   
 
-def stats(user):
+def stats(user, args):
     exp = Users.get_data(user, "exp", 0)
     rod = Users.get_data(user, "rod", 0)
     fish_count = Users.get_data(user, "fish_count", 0)
@@ -83,7 +83,7 @@ def stats(user):
         "buttons": buttons
     }
 
-def upgrade(user):
+def upgrade(user, args):
     exp = Users.get_data(user, "exp", 0)
     rod = Users.get_data(user, "rod", 0)
 
@@ -105,7 +105,7 @@ def upgrade(user):
         }
     }
 
-def top(user):
+def top(user, args):
     users_exp = Users.get_data_from_all_users("exp", 0)
     users_exp = dict(sorted(users_exp.items(), reverse=1, key=lambda x: x[1])[:10])
 
