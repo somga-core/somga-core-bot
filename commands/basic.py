@@ -24,3 +24,11 @@ def debug(user, args):
 
 def restart(user, args):
     raise Exception("restarting")
+
+def wipe(user, args):
+    if not "да" in args:
+        return "Вы точно хотите удалить все данные о пользователях? Напишите 'да' после команды чтобы подтвердить"
+    elif not "точно-точно" in args:
+        return "Вы уверены в этом? Напишите 'точно-точно' после команды чтобы подтвердить"
+
+    Users.delete_all()

@@ -1,4 +1,4 @@
-from os import listdir
+from os import listdir, remove
 from os.path import isfile, join
 import json
 from logs import *
@@ -50,3 +50,8 @@ class Users:
                 data[user] = current_data[variable]
         
         return data
+    
+    @staticmethod
+    def delete_all():
+        [remove(join(USERS_FOLDER, f)) for f in listdir(USERS_FOLDER) if isfile(join(USERS_FOLDER, f))]
+        Logs.print_log("d", "Removed all user data")

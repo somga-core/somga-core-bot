@@ -24,6 +24,10 @@
         "/restart": {
             "function": "restart",
             "admin": true
+        },
+        "/wipe": {
+            "function": "wipe",
+            "admin": true
         }
     }
 }
