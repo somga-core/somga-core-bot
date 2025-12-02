@@ -4,11 +4,11 @@ import requests
 import datetime
 
 def sex(user, args):
-    wordle_url = f"https://www.nytimes.com/svc/wordle/v2/{datetime.date.today().strftime('%Y-%m-%d')}.json"
-    wordle_answer = requests.get(wordle_url).json()["solution"]
+    # wordle_url = f"https://www.nytimes.com/svc/wordle/v2/{datetime.date.today().strftime('%Y-%m-%d')}.json"
+    # wordle_answer = requests.get(wordle_url).json()["solution"]
 
-    if not wordle_answer in args:
-        return "Вот это ты шалунишка!\n\nПеред тем как увидеть действие команды /sex, введи после команды ответ на сегодняшний wordle (Например: '/sex unity')"
+    # if not wordle_answer in args:
+    #     return "Вот это ты шалунишка!\n\nПеред тем как увидеть действие команды /sex, введи после команды ответ на сегодняшний wordle (Например: '/sex unity')"
     
     # Users.send_data(user, {"sex_counter": Users.get_data(user, "sex_counter", 0) + 1})
     
