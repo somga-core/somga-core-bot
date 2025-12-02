@@ -45,4 +45,4 @@ def ticket(user, args):
         }
     }
 
-print(ticket(0, ["random"]))
+# print(ticket(0, ["random"]))
