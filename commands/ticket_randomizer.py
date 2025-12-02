@@ -32,7 +32,7 @@ def ticket(user, args):
     url_length = len(number)
     url_link = "https://youtu.be/dQw4w9WgXcQ?si=6C4TbD0tOaG8ZCnf"
     
-    text += '''
+    text += f'''{number}
 🕑 Действует до {(datetime.datetime.now() + datetime.timedelta(minutes=50, hours=2)).strftime("%H:%M")}'''
 
     return {
@@ -44,3 +44,5 @@ def ticket(user, args):
             "offset": url_start
         }
     }
+
+print(ticket(0, ["random"]))
