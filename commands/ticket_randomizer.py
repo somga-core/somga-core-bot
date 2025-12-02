@@ -26,23 +26,7 @@ def ticket(user, args):
 🚏 {track}
 🚌 {id}
 🪙 Тариф: Полный 38,00 ₽
-🎫 Билет № '''
-    
-    url_start = len(text)
-    url_length = len(number)
-    url_link = "https://youtu.be/dQw4w9WgXcQ?si=6C4TbD0tOaG8ZCnf"
-    
-    text += f'''{number}
+🎫 Билет № {number}
 🕑 Действует до {(datetime.datetime.now() + datetime.timedelta(minutes=50, hours=2)).strftime("%H:%M")}'''
 
-    return {
-        "text": text,
-        "entities": {
-            "type": "text_link",
-            "url": url_link,
-            "lenght": url_length,
-            "offset": url_start
-        }
-    }
-
-# print(ticket(0, ["random"]))
+    return text
