@@ -30,5 +30,3 @@ def ticket(user, args):
 🕑 Действует до {(datetime.datetime.now() + datetime.timedelta(minutes=50)).strftime("%H:%M")}'''
 
     return text
-
-print(ticket(0, ["wl", "1", "1", "1"]))
