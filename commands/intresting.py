@@ -10,7 +10,7 @@ def sex(user, args):
     if not wordle_answer in args:
         return "Вот это ты шалунишка!\n\nПеред тем как увидеть действие команды /sex, введи после команды ответ на сегодняшний wordle (Например: '/sex unity')"
     
-    Users.send_data(user, {"sex_counter": Users.get_data(user, "sex_counter", 0) + 1})
+    # Users.send_data(user, {"sex_counter": Users.get_data(user, "sex_counter", 0) + 1})
     
     return {
         "text": "Ага, попался! На жуков дрочишь!\n\nТы занесен в базу данных смотревших жучье порно. Чтобы посмотреть её, введи команду /sex_top",
