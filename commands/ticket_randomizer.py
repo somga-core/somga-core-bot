@@ -19,7 +19,7 @@ def ticket(user, args):
             company = args[0]
         track = args[1]
         id = args[2]
-        number = args[3]
+        number = " ".join(args[3:])
 
     text = f'''Билет куплен успешно.
 {company}
