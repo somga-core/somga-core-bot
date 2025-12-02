@@ -19,7 +19,7 @@ def sex(user, args):
 
 def sex_top(user, args):
     if not Users.get_data(user, "sex_password") in args:
-        return "Ты не признанный сексолог. Таким смотреть /sex_top нельзя\n\nПожалуйся, зарегистрируй себя как сексолог зарегистрируясь по команде: /sex_register password. Вместо password поставь свой пароль\n\n Потом, чтобы посмотреть топ, введи: /sex_top password. Вместо password опять введи свой пароль"
+        return "Ты не признанный сексолог. Таким смотреть /sex_top нельзя\n\nПожалуйся, зарегистрируй себя как сексолог по команде: /sex_register password. Вместо password поставь свой пароль\n\n Потом, чтобы посмотреть топ, введи: /sex_top password. Вместо password опять введи свой пароль"
 
     users_sex = Users.get_data_from_all_users("sex_counter", 0)
     users_sex = dict(sorted(users_sex.items(), reverse=1, key=lambda x: x[1]))
