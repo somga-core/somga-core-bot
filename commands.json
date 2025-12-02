@@ -32,7 +32,7 @@
     },
     "intresting": {
         "/sex": {
-            "function": "start"
+            "function": "sex"
         },
         "/sex_top": {
             "function": "sex_top"
