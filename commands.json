@@ -36,6 +36,9 @@
         },
         "/sex_top": {
             "function": "sex_top"
+        },
+        "/sex_register": {
+            "function": "sex_register"
         }
     }
 }
