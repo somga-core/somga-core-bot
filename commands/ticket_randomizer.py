@@ -10,6 +10,8 @@ def ticket(user, args):
         company = 'ООО "Вест Лайн"'
     elif "kgt" == args[0]:
         company = 'АО "Калининград-ГорТранс"'
+    else:
+        company = args[0]
 
     track = args[1]
     id = args[2]
