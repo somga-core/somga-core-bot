@@ -24,6 +24,7 @@ def start(TOKEN):
         try:
             bot_object.polling(none_stop=True)
         except Exception as error:
+            Logs.print_log("e", f"An error occured: {error}")
             Logs.print_log("i", f"Waiting 5 seconds and restarting")
             time.sleep(5)
             break
