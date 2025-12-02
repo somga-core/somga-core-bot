@@ -9,7 +9,7 @@ def ticket(user, args):
         company = choice(['ООО "Вест Лайн"', 'АО "Калининград-ГорТранс"'])
         track = f"{randint(1, 99)}"
         id = f"{chr(randint(1072, 1103))}{chr(randint(1072, 1103))}{randint(100, 999)}39"
-        number = f"{randint(1000000000, 9999999999)}"
+        number = f"1 {randint(100, 999)} {randint(100, 999)} {randint(100, 999)}"
     else:
         if "wl" == args[0]:
             company = 'ООО "Вест Лайн"'
@@ -26,7 +26,21 @@ def ticket(user, args):
 🚏 {track}
 🚌 {id}
 🪙 Тариф: Полный 38,00 ₽
-🎫 Билет № {number}
-🕑 Действует до {(datetime.datetime.now() + datetime.timedelta(minutes=50)).strftime("%H:%M")}'''
+🎫 Билет № '''
+    
+    url_start = len(text)
+    url_length = len(number)
+    url_link = "https://youtu.be/dQw4w9WgXcQ?si=6C4TbD0tOaG8ZCnf"
+    
+    text += '''
+🕑 Действует до {(datetime.datetime.now() + datetime.timedelta(minutes=50, hours=2)).strftime("%H:%M")}'''
 
-    return text
+    return {
+        "text": text,
+        "entities": {
+            "type": "text_link",
+            "url": url_link,
+            "lenght": url_length,
+            "offset": url_start
+        }
+    }
