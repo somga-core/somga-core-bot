@@ -40,5 +40,10 @@
         "/sex_register": {
             "function": "sex_register"
         }
+    },
+    "ticket_randomizer": {
+        "/ticket": {
+            "function": "ticket"
+        }
     }
 }
