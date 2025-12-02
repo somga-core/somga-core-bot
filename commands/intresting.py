@@ -14,7 +14,7 @@ def sex(user, args):
     
     return {
         "text": "Ага, попался! На жуков дрочишь!\n\nТы занесен в базу данных смотревших жучье порно. Чтобы посмотреть её, введи команду /sex_top",
-        "image": "somga_core.png"
+        "image": "zuche_onrop.jpg"
     }
 
 def sex_top(user, args):
