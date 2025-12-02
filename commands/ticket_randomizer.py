@@ -3,7 +3,12 @@ from random import randint, choice
 import datetime
 
 def ticket(user, args):
-    if len(args) != 4:
+    if "random" in args:
+        company = choice(['ООО "Вест Лайн"', 'АО "Калининград-ГорТранс"'])
+        track = f"{randint(1, 99)}"
+        id = f"{chr(randint(1072, 1103))}{chr(randint(1072, 1103))}{randint(100, 999)}39"
+        number = f"{randint(1000000000, 9999999999)}"
+    elif len(args) != 4:
         return "Ты неправильно указал аргументы!\n\nЕсли хочешь сгенерировать случайный билет, то введи команду: /ticket random\n\nИли же ты можешь указать аргументы: /ticket компания маршрут номер_автобуса номер_билета. Вместо компания укажи либо wl для 'Вест лайн', либо kgt для 'Калининград-ГорТранс', либо любое своё название. Маршрут, номер автобуса и номер билета будут отображатся так же, как ты их введёшь"
 
     if "wl" == args[0]:
@@ -16,12 +21,6 @@ def ticket(user, args):
     track = args[1]
     id = args[2]
     number = args[3]
-
-    if "random" in args:
-        company = choice(['ООО "Вест Лайн"', 'АО "Калининград-ГорТранс"'])
-        track = f"{randint(1, 99)}"
-        id = f"{chr(randint(1072, 1103))}{chr(randint(1072, 1103))}{randint(100, 999)}39"
-        number = f"{randint(1000000000, 9999999999)}"
 
     text = f'''Билет куплен успешно.
 {company}
