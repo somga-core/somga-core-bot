@@ -54,7 +54,6 @@ def fish(user, args):
     
     return {
         "text": text,
-        "entities": [],
         "buttons": {
             "Закинуть удочку": "/fish",
             "Статистика": "/stats"
@@ -79,7 +78,6 @@ def stats(user, args):
     
     return {
         "text": text + update_text,
-        "entities": [],
         "buttons": buttons
     }
 
@@ -99,7 +97,6 @@ def upgrade(user, args):
     
     return {
         "text": text,
-        "entities": [],
         "buttons": {
             "Закинуть удочку": "/fish"
         }
@@ -115,11 +112,10 @@ def top(user, args):
         first_name = Users.get_data(list(users_exp.keys())[exp_id], 'first_name')
         last_name = Users.get_data(list(users_exp.keys())[exp_id], 'last_name')
         username = Users.get_data(list(users_exp.keys())[exp_id], 'username')
-        text += f"{exp_id + 1}. {first_name} {last_name + ' ' if not last_name is None else ''}{'(@' + username + ')' if username is not None else ''} - {list(users_exp.values())[exp_id]}\n"
+        text += f"{exp_id + 1}. {first_name} {last_name + ' ' if not last_name is None else ''}{'(@' + username + ') ' if username is not None else ''}- {list(users_exp.values())[exp_id]}\n"
 
     return {
         "text": text,
-        "entities": [],
         "buttons": {
             "Закинуть удочку": "/fish"
         }

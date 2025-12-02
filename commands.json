@@ -29,5 +29,13 @@
             "function": "wipe",
             "admin": true
         }
+    },
+    "intresting": {
+        "/sex": {
+            "function": "start"
+        },
+        "/sex_top": {
+            "function": "sex_top"
+        }
     }
 }

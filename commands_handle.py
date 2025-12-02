@@ -50,6 +50,9 @@ class CommandsHandle:
         sended_message = function(user, args)
         command = [i for i in CommandsHandle.commands_list if CommandsHandle.commands_list[i] == function][0]
 
+        if not "entities" in sended_message:
+            sended_message["entities"] = []
+
         if type(sended_message) == type(""):
             bot.send_message(
                 chat_id=chat_id,

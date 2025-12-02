@@ -12,7 +12,6 @@ def start(user, args):
 
     return {
         "text": text,
-        "entities": [],
         "image": "somga_core.png",
         "buttons": {
             "Закинуть удочку": "/fish"

@@ -1,6 +1,4 @@
-#!/bin/sh
-'''exec' "/home/korsy/Документы/python/Проекты/Fishing bot/.venv/bin/python3" "$0" "$@"
-' '''
+#!/home/korsy/Документы/python/Проекты/somga-core-bot/.venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
